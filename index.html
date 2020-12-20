@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>HTML5 Canvas - Sine wave</title>
+            <style>
+          body{
+              background:#151515;
+          }
+          div{
+              z-index:2;
+              position:absolute;
+          }
+          input[type=range]{
+              width:200px;
+              height:15px;
+              -webkit-appearance:none;
+              background:#111;
+              outline:none;
+              margin:5px;
+              position: relative;
+              border-radius:15px;
+              overflow:hidden;
+              box-shadow:inset 0 0 5px rgba(0,0,0,1);
+          }
+          input[type=range]::-moz-range-thumb,input[type=range]::-webkit-slider-thumb{
+              -webkit-appearance:none;
+              width:15px;
+              height:15px;
+              border-radius:50%;
+              background:#00fd0a;
+              cursor:pointer;
+              border:4px solid #333;
+              box-shadow:-407px 0 0 400px #00fd0a;
+          }
+      </style>
+    </head>
+
+    <body>
+        <div>
+            <input title="height" type="range" id="height" oninput="ranges()" onchange="ranges()">
+            <input title="wavelength" type="range" id="wavelength" oninput="ranges()" onchange="ranges()">
+            <input title="amplitude" type="range" id="amplitude" oninput="ranges()" onchange="ranges()">
+            <input title="frequency" type="range" id="freq" oninput="ranges()" onchange="ranges()"></br>
+            <input title="H" type="range" id="h" oninput="color()" onchange="color()">
+            <input title="S" type="range" id="s" oninput="color()" onchange="color()">
+            <input title="L" type="range" id="l" oninput="color()" onchange="color()">
+        </div>
+        <canvas style="background-color:white"></canvas>
+    </body>
+    <script>
+        var inheight = document.getElementById('height'); 
+        var inwavelen = document.getElementById('wavelength');
+        var inamplitude = document.getElementById('amplitude');
+        var infreq = document.getElementById('freq');
+        var inh = document.getElementById('h');
+        var ins = document.getElementById('s');
+        var inl = document.getElementById('l');
+        var canvas = document.querySelector('canvas');
+        var c = canvas.getContext("2d");
+        var y,wavelength,ampliude,freq;
+        var inc=0.01;//change to 0.01 to make //animation
+        var H,W,h,s,l;
+        // inc=parseFloat(freq);
+        function animate(){
+            requestAnimationFrame(animate);
+            c.fillStyle="rgba(0,0,0,0.01)";
+            c.fillRect(0,0,W,H); //animation
+            c.beginPath();
+            c.moveTo(0,y);
+            for(let i=0;i<canvas.width;++i){
+                c.lineTo(i,y + Math.sin(i*wavelength+inc)*ampliude);
+            }
+            c.stroke();
+            c.strokeStyle = `hsl(${h},${s}%,${l}%)`;
+            inc+= parseFloat(freq); //animation
+        }
+        animate();
+        function ranges(){
+            y=inheight.value/2;
+            wavelength=inwavelen.value;
+            ampliude=inamplitude.value;
+            freq=infreq.value;
+        }
+        function color(){
+            h = inh.value;
+            s = ins.value;
+            l = inl.value;
+            c.strokeStyle = `hsl(${r},${g}%,${b}%)`;
+        }
+        
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            H = canvas.height;
+            W = canvas.width;
+            //set min/max height of wave
+            inheight.min = 0;
+            inheight.max = H;
+            inheight.value=H;
+            //set min/max/step wavelength of wave
+            inwavelen.step=0.001;
+            inwavelen.min = -0.01;
+            inwavelen.max = 0.01;
+            inwavelen.value=0.01;
+            //set amplitude of wave
+            inamplitude.min=-300;
+            inamplitude.max=300;
+            inamplitude.value = 100;
+            //set frequency
+            infreq.step=0.01;
+            infreq.min=-0.1;
+            infreq.max=0.1;
+            infreq.value=0.01;
+
+            //set color values
+            inh.max=255;
+            inh.min=0;
+            inh.value=0;
+            ins.max=100;
+            ins.min=0;
+            ins.value=50;
+            inl.max=100;
+            inl.min=0;
+            inl.value=50;
+            
+            y=inheight.value/2;
+            wavelength=inwavelen.value;
+            ampliude=inamplitude.value;
+            freq = infreq.value;
+            inc = parseFloat(freq);
+            h = inh.value;
+            s = ins.value;
+            l = inl.value;
+            c.strokeStyle = `hsl(${s},${s}%,${l}%)`;
+        
+        window.onresize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            H = canvas.height;
+            W = canvas.width;
+        }
+    </script>
+  </html>
+
