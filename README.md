@@ -15,3 +15,6 @@ The wavelength is the spatial period of a periodic wave the distance over which 
 
  wavelength and wavenumber are related to velocity and frequency as: 
  k = 2<span>&#928;</span>/<span>&lambda;</span> = 2<span>&#928;</span>f/v = <span>&omega;</span>/v
+
+
+Here [Demo](https://sidpro-hash.github.io/HTML-Canvas/)
