@@ -32,10 +32,35 @@
               border:4px solid #333;
               box-shadow:-407px 0 0 400px #00fd0a;
           }
+		  	ul {
+			  background: #ff9999;
+			  padding: 20px;
+			  
+			}
+			ul li {
+			  background: #ffe5e5;
+			  padding: 5px;
+			  margin-left: 35px;
+			  overflow-x:hidden;
+			}
+			a:link, a:visited {
+			  background-color: #f44336;
+			  color: white;
+			  padding: 14px 25px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  width:100%;
+			  text-align:left;
+			}
+			a:hover, a:active {
+			  background-color: red;
+			}
       </style>
     </head>
 
     <body>
+
         <div>
             <input title="height" type="range" id="height" oninput="ranges()" onchange="ranges()">
             <input title="wavelength" type="range" id="wavelength" oninput="ranges()" onchange="ranges()">
@@ -46,6 +71,9 @@
             <input title="L" type="range" id="l" oninput="color()" onchange="color()">
         </div>
         <canvas style="background-color:white"></canvas>
+		<ul>
+			<li><a href="Data visulization JavaScript/index.html" target="_self">Data Visualization with javascript</a></li>
+		</ul>
     </body>
     <script>
         var inheight = document.getElementById('height'); 
