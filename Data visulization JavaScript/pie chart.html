@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Single Pie chart</title>
+	<meta charset="utf-8">
+	<meta name="author" content="SidPro"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="description" content="Showing the data as a Single Pie chart"/>
+	<meta name="keywords" content="Single,Pie,Chart,Single Pie Chart,Line"/>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/canvasjs.min.js"></script>
+</head>
+<body>
+	<h2>Showing the data as a Single Pie chart</h2>
+	<div id="chartContainer" style="height: 600px; width: 100%;"></div>
+</body>
+	<script type="text/javascript">
+	var facecream=0,facewash=0,toothpaste=0
+	,bathingsoap=0,shampoo=0,moisturizer=0;
+	window.onload = function () {
+		$.get('data/data.txt', function(theData) {
+		
+		
+		  theData = theData.replace(/\r/g,'');
+		  theData = theData.replace(/\t/g,' ');
+		  theData = theData.split('\n');
+		  totalRows = theData.length;
+		  data = theData;
+		  for(let i=1;i<totalRows;++i){
+			theData = data[i].split(' ');
+			facecream+=parseInt(theData[1]);
+			facewash+=parseInt(theData[2]);
+			toothpaste+=parseInt(theData[3]);
+			bathingsoap+=parseInt(theData[4]);
+			shampoo+=parseInt(theData[5]);
+			moisturizer+=parseInt(theData[6]);
+		  }
+		  //console.log(facecream,facewash,toothpaste,bathingsoap,shampoo,moisturizer);
+		  total = facecream+facewash+toothpaste+bathingsoap+shampoo+moisturizer;
+		  //console.log(total);
+		  facecream = facecream*100/total;
+		  facewash = facewash*100/total;
+		  toothpaste = toothpaste*100/total;
+		  bathingsoap = bathingsoap*100/total;
+		  shampoo = shampoo*100/total;
+		  moisturizer = moisturizer*100/total;
+		  //console.log(facecream,facewash,toothpaste,bathingsoap,shampoo,moisturizer);
+		  		CanvasJS.addColorSet("colors",
+                [//colorSet Array
+                "#2F4F4F",
+                "#008080",
+                "#2E8B57",
+                "#3CB371",
+                "#90EE90",
+				"#5d9e9e"
+                ]);
+			var chart = new CanvasJS.Chart("chartContainer", {
+				colorSet: "colors",
+				theme: "light2",
+				exportEnabled: false,
+				animationEnabled: true,
+				title: {
+					text: "Yearly sales of Products"
+				},
+				legend:{
+					cursor: "pointer"
+				},
+				subtitles: [{
+					text: "Single Pie chart",
+					fontSize: 16
+				}],
+				data: [
+					{
+						type: "pie",
+						showInLegend: true,
+						indexLabelFontSize: 18,
+						radius: 180,
+						indexLabel: "{name} - {y}",
+						yValueFormatString: "###0.0\"%\"",
+						dataPoints: [
+							{ y: facecream, name: "Facecream" ,exploded: true},
+							{ y: facewash, name: "Facewash"},
+							{ y: toothpaste, name: "Toothpaste" },
+							{ y: bathingsoap, name: "Bathingsoap" },
+							{ y: shampoo, name: "Shampoo" },
+							{ y: moisturizer, name: "Moisturizer" }
+						]
+					}
+				]
+			});
+			chart.render();
+		});
+
+	}
+	</script>
+</html>

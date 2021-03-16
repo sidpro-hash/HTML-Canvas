@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Showing the data as a Simple Bar Chart</title>
+	<meta charset="utf-8">
+	<meta name="author" content="SidPro"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="description" content="Showing the sales data of Facecream as a Simple Bar chart"/>
+	<meta name="keywords" content="Single,Bar,Chart,Single Bar Chart,Line"/>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/canvasjs.min.js"></script>
+</head>
+<body>
+	<h2>Showing the data as a Simple Bar Chart</h2>
+	<div id="chartContainer" style="height: 600px; width: 100%;"></div>
+</body>
+	<script type="text/javascript"> 
+	window.onload = function () {
+		
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title:{
+					text: "the sales data of Facecream"              
+				},
+				axisX:{
+					title: "Month",
+				},
+				axisY:{
+					title:"Sales Unit",
+				},
+				theme: "dark1", //"light1", "light2", "dark1", "dark2"
+				data: [              
+				{
+					// Change type to "column", "doughnut", "line", "splineArea", etc.
+					type: "column",
+					dataPoints: [
+							{ label: "Jan", y: 2500  },
+							{ label: "Feb", y: 2630  },
+							{ label: "Mar", y: 2140  },
+							{ label: "Apr", y: 3400  },
+							{ label: "May", y: 3600  },
+							{ label: "Jun", y: 2760  },
+							{ label: "Jul", y: 2980  },
+							{ label: "Aug", y: 3700  },
+							{ label: "Sep", y: 3540  },
+							{ label: "Oct", y: 1990  },
+							{ label: "Nov", y: 2340  },
+							{ label: "Dec", y: 2900  }
+					]
+				}
+				]
+			});
+			chart.render();
+	}
+	</script>
+</html>

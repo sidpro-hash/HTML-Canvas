@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Multi Line chart</title>
+	<meta charset="utf-8">
+	<meta name="author" content="SidPro"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="description" content="Showing the sales data of Products as a Multi Line chart"/>
+	<meta name="keywords" content="Multi,Line,Chart,Multi Line Chart,Line"/>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/canvasjs.min.js"></script>
+</head>
+<body>
+	<h2>Showing the sales data of Products as a Multi Line chart</h2>
+	<div id="chartContainer" style="height: 600px; width: 100%;"></div>
+</body>
+	<script type="text/javascript">
+
+	window.onload = function () {
+			/*CanvasJS.addColorSet("colors",
+                [//colorSet Array
+                "#2F4F4F",
+                "#008080",
+                "#2E8B57",
+                "#3CB371",
+                "#90EE90"                
+                ]);*/
+			var chart = new CanvasJS.Chart("chartContainer", {
+				//colorSet: "colors",
+				title:{
+					text: "Showing the sales data of Products as a Multi Line chart",
+					fontSize: 30,
+				},
+				axisX:{
+					title: "Month",
+				},
+				axisY:{
+					title:"Sales Unit",
+				},
+				theme: "dark1", //"light1", "light2", "dark1", "dark2"
+				data: [              
+					{
+						// Change type to "column", "doughnut", "line", "splineArea", etc.
+						type: "line",
+						showInLegend: true,
+						legendText: "Facewash",
+						dataPoints: [
+							{ label: "Jan", y: 1200  },
+							{ label: "Feb", y: 2100  },
+							{ label: "Mar", y: 3550  },
+							{ label: "Apr", y: 1870  },
+							{ label: "May", y: 1560  },
+							{ label: "Jun", y: 1890  },
+							{ label: "Jul", y: 1780  },
+							{ label: "Aug", y: 2860  },
+							{ label: "Sep", y: 2100  },
+							{ label: "Oct", y: 2300  },
+							{ label: "Nov", y: 2400  },
+							{ label: "Dec", y: 1800  }
+						]
+					},{
+						// Change type to "column", "doughnut", "line", "splineArea", etc.
+						type: "line",
+						showInLegend: true,
+						legendText: "Toothpaste",
+						dataPoints: [
+							{ label: "Jan", y: 1500  },
+							{ label: "Feb", y: 1200  },
+							{ label: "Mar", y: 1340  },
+							{ label: "Apr", y: 1130  },
+							{ label: "May", y: 1740  },
+							{ label: "Jun", y: 1555  },
+							{ label: "Jul", y: 1120  },
+							{ label: "Aug", y: 1400  },
+							{ label: "Sep", y: 1780  },
+							{ label: "Oct", y: 1890  },
+							{ label: "Nov", y: 2100  },
+							{ label: "Dec", y: 1760  }
+						]
+					},
+					{
+						// Change type to "column", "doughnut", "line", "splineArea", etc.
+						type: "line",
+						showInLegend: true,
+						legendText: "Facecream",
+						dataPoints: [
+							{ label: "Jan", y: 2500  },
+							{ label: "Feb", y: 2630  },
+							{ label: "Mar", y: 2140  },
+							{ label: "Apr", y: 3400  },
+							{ label: "May", y: 3600  },
+							{ label: "Jun", y: 2760  },
+							{ label: "Jul", y: 2980  },
+							{ label: "Aug", y: 3700  },
+							{ label: "Sep", y: 3540  },
+							{ label: "Oct", y: 1990  },
+							{ label: "Nov", y: 2340  },
+							{ label: "Dec", y: 2900  }
+						]
+					}
+				]
+			});
+			chart.render();
+	}
+	</script>
+</html>
