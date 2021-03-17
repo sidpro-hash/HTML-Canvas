@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Google API Bar chart</title>
+	<meta charset="utf-8">
+	<meta name="author" content="SidPro"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="description" content="Using Google Charts API Basics draw charts like a Bar chart"/>
+	<meta name="keywords" content="Google,API,Chart,Bar Chart,Bar"/>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/loader.js"></script>
+</head>
+<body>
+	<h2>Using Google Charts API Basics draw charts like a Bar chart</h2>
+	<div id="chart" style="width: 900px; height: 500px"></div>
+</body>
+	<script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'Toothpaste', 'Bathingsoap', 'Shampoo'],
+		  ['Jan', 5200, 9200, 1200],
+          ['Feb', 5100, 6100, 2100],
+          ['Mar', 4550, 9550, 3550],
+          ['Apr', 5870, 8870, 1870],
+		  ['May', 4560, 7760, 1560],
+		  ['Jun', 4890, 7490, 1890],
+		  ['Jul', 4780, 8980, 1780],
+		  ['Aug', 5860, 9960, 2860],
+		  ['Sep', 6100, 8100, 2100],
+		  ['Oct', 8300, 10300, 2300],
+		  ['Nov', 7300, 13300, 2400],
+		  ['Dec', 7400, 14400, 1800],
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Company Sales',
+            subtitle: 'Toothpaste ,Bathingsoap and Shampoo Monthly',
+          },
+		  chartArea:{
+			backgroundColor:'#2a2a2a'
+		  },
+		  backgroundColor: '#2a2a2a',
+		  colors: ['#9bbb58','#4f81bc','#c0504e'],
+		  titleTextStyle:{color: 'white',bold: true,fontSize: 20,italic: false},
+		  hAxis:{
+			title:'Months',
+			titleTextStyle: {color: 'white',bold: false,italic: false},
+			textStyle:{color: 'white',bold: false,italic: false},
+			baselineColor:'#51cda0',
+			gridlines:{color: 'green',minSpacing: 20}
+		  },
+		  vAxis:{
+			title: 'Sales Unit', 
+			titleTextStyle: {color: 'white',bold: false,italic: false},
+			baselineColor:'white',
+			gridlines:{color: 'gray'},
+			textStyle:{color: 'white',bold: false,italic: false}
+		  },
+		  animation:{duration:1000,startup:true,easing:'linear'},
+		  tooltip:{textStyle: {color: '#871b47'}, showColorCode: true},
+          legend: { position: 'bottom',textStyle: {color: 'white', fontSize: 16} }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+	</script>
+</html>
