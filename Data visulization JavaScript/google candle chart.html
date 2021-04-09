@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Google API CandleStick chart</title>
+	<meta charset="utf-8">
+	<meta name="author" content="SidPro"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="description" content="Using Google Charts API Basics draw charts like a CandleStick chart"/>
+	<meta name="keywords" content="Google,API,Chart,CandleStick Chart,CandleStick"/>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/loader.js"></script>
+</head>
+<body>
+	<h2>Using Google Charts API Basics draw charts like a CandleStick chart</h2>
+	<div id="chart" style="width: 900px; height: 500px"></div>
+</body>
+	<script type="text/javascript">
+       google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          //(NSE Indices - Nifty 500)
+		 //data format  low,open,close,high   if open<close then candle will be filled;else candle will be hollow
+      ['Just Dial', 	784, 820, 870, 885],
+      ['Tata Chemical',	590, 614, 732, 743],
+	  ['Canara Bank',	680, 840, 706, 860],
+	  ['Torrent Power',	560, 600, 710, 743],
+	  ['IRCTC',			520, 560, 712, 743],
+	  ['Airtel',		630, 720, 670, 743],
+	  // https://www.investopedia.com/trading/candlestick-charting-what-is-it/
+      // Treat first row as data as well.
+    ], true);
+
+    var options = {
+	  title:'(NSE Indices - Nifty 500)',
+	  titleTextStyle:{color: 'white',bold: true,fontSize: 20,italic: false},
+	  colors:['#6d78ad'],
+	  backgroundColor: '#2a2a2a',
+	  animation:{ duration:1000,easing:'linear',startup:true},
+	  tooltip:{textStyle: {color: '#871b47'}, showColorCode: true},
+	  hAxis:{
+		title:'Company Name',
+		titleTextStyle: {color: 'white',bold: false,italic: false},
+		textStyle:{color: 'white',bold: false,italic: false},
+		baselineColor:'#51cda0',
+		gridlines:{color: 'green',minSpacing: 20}
+	  },
+	  vAxis:{
+		title: 'Stock stat', 
+		titleTextStyle: {color: 'white',bold: false,italic: false},
+		baselineColor:'white',
+		gridlines:{color: 'gray'},
+		textStyle:{color: 'white',bold: false,italic: false}
+	  },
+	  candlestick:{hollowIsRising:true,
+				 fallingColor:{fill:'white',stroke:'#6d78ad',strokeWidth:2},
+				 risingColor:{fill:'#6d78ad',stroke:'#6d78ad',strokeWidth:2}},
+	  legend: 'none'
+    };
+        var chart = new google.visualization.CandlestickChart(document.getElementById('chart'));
+        chart.draw(data, options);
+	}
+	</script>
+</html>
