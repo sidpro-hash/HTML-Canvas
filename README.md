@@ -42,6 +42,10 @@ Here [Demo](https://sidpro-hash.github.io/HTML-Canvas/)
 18. [Using Google Charts API Basics draw charts like a Line chart (JavaScript,Google Chart API)](https://github.com/sidpro-hash/HTML-Canvas/blob/main/Data%20visulization%20JavaScript/google%20line%20chart.html)
 19. [Using Google Charts API Basics draw charts like a Bar chart (JavaScript,Google Chart API)](https://github.com/sidpro-hash/HTML-Canvas/blob/main/Data%20visulization%20JavaScript/google%20bar%20chart.html)
 20. [Using Google Charts API Basics draw charts like a Pie chart (JavaScript,Google Chart API)](https://github.com/sidpro-hash/HTML-Canvas/blob/main/Data%20visulization%20JavaScript/google%20pie%20chart.html)
+21. [Using Google Charts API Basics draw charts like a candle chart (JavaScript,Google Chart API)](https://github.com/sidpro-hash/HTML-Canvas/blob/main/Data%20visulization%20JavaScript/google%20candle%20chart.html)
+22. [Using Google Charts API Basics draw charts like a donut chart (JavaScript,Google Chart API)](https://github.com/sidpro-hash/HTML-Canvas/blob/main/Data%20visulization%20JavaScript/google%20donut%20chart.html)
+23. [Using Google Charts API Basics draw charts like a bubble chart (JavaScript,Google Chart API)](https://github.com/sidpro-hash/HTML-Canvas/blob/main/Data%20visulization%20JavaScript/google%20other%20type.html)
+24. [Using Google API read JSON file and create Google Map. (JavaScript, Google Chart API)](https://github.com/sidpro-hash/HTML-Canvas/blob/main/Data%20visulization%20JavaScript/google%20map%20json.html)
 
 
 Here [Demo](https://sidpro-hash.github.io/HTML-Canvas/Data%20visulization%20JavaScript/index.html)
