@@ -37,11 +37,11 @@
                 var arr = [['Country', 'Total COVID-19 Cases']];    
 
                 
-                /*$.each(data, function (k, v) {
-                    arr.push([value.city, value.n]);
-                });*/
+                $.each(data, function (k, v) {
+                    arr.push([v.city, v.n]);
+                });
 		//var Data = google.visualization.arrayToDataTable(arr);
-		var Data = google.visualization.arrayToDataTable(covid19);// on local system comment this and uncomment above lines 
+		var Data = google.visualization.arrayToDataTable(covid19);// on local system comment this and uncomment above line 
               
                 var options = {
 					colorAxis: {colors: ['#9bbb58','#4f81bc','#c0504e']},
