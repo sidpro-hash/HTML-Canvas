@@ -8,6 +8,7 @@
 	<meta name="description" content="Using Google API read JSON file and create Google Map."/>
 	<meta name="keywords" content="Google,API,Geo Chart,Covid19 Geo Chart,Covid19"/>
 	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/data.js"></script>
 	<script type="text/javascript" src="js/loader.js"></script>
 </head>
 <!-- Live link: https://sidpro-hash.github.io/HTML-Canvas/Data%20visulization%20JavaScript/google%20map%20json.html -->
@@ -49,7 +50,9 @@
 				};
 
                
-                var Data = google.visualization.arrayToDataTable(arr);
+                //var Data = google.visualization.arrayToDataTable(arr);
+				var Data = google.visualization.arrayToDataTable(covid19);// on local system comment this and uncomment above line 
+				
                 var chart = new google.visualization.GeoChart(document.getElementById('chart'));
                 chart.draw(Data, options);      
             },
