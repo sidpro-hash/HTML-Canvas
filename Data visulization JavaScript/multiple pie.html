@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Multiple Pie chart</title>
+	<meta charset="utf-8">
+	<meta name="author" content="SidPro"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="description" content="Showing the data as a Multiple Pie chart"/>
+	<meta name="keywords" content="Multiple,Pie,Chart,Multiple Pie Chart,Pie"/>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/canvasjs.min.js"></script>
+</head>
+<body>
+	<h2 style="text-align:center">Showing the data as a Multiple Pie chart</h2>
+    <div id="chartContainer1" style="height:600px;width:45%;display: inline-block;"></div>
+    <div id="chartContainer2" style="height:600px;width:45%;display: inline-block;"></div>
+</body>
+	<script type="text/javascript">
+	
+	window.onload = function () {
+	var toothpaste=[],bathingsoap=[];
+		$.get('data/data.txt', function(theData) {
+		  theData = theData.replace(/\r/g,'');
+		  theData = theData.replace(/\t/g,' ');
+		  theData = theData.split('\n');
+		  totalRows = theData.length;
+		  data = theData;
+		  for(let i=1;i<totalRows;++i){
+			theData = data[i].split(' ');
+
+			toothpaste[i-1]=parseInt(theData[3])*100/69910;
+			bathingsoap[i-1]=parseInt(theData[4])*100/114010;
+
+		  }
+		  		CanvasJS.addColorSet("colors",
+                [//colorSet Array
+                "#264e70","#95adbe","#574f7d","#503a65","#3c2a4d","#f9b4ab",
+				"#fdebd3","#e0f0ea","#679186","#2E8B57","#3CB371","#5d9e9e"
+                ]);
+			var chart = new CanvasJS.Chart("chartContainer1", {
+				colorSet: "colors",
+				theme: "light2",
+				exportEnabled: false,
+				animationEnabled: true,
+				title: {
+					text: "Monthly sales of Toothpaste",
+					fontSize: 20
+				},
+				legend:{
+					cursor: "pointer"
+				},
+				subtitles: [{
+					text: "Pie chart",
+					fontSize: 16
+				}],
+				data: [
+					{
+						type: "pie",
+						showInLegend: false,
+						indexLabelFontSize: 18,
+						radius: 180,
+						indexLabel: "{name} - {y}",
+						yValueFormatString: "###0.0\"%\"",
+						dataPoints: [
+							{ y: toothpaste[0], name: "January" ,exploded: true},
+							{ y: toothpaste[1], name: "February"},
+							{ y: toothpaste[2], name: "March" },
+							{ y: toothpaste[3], name: "April" },
+							{ y: toothpaste[4], name: "May" },
+							{ y: toothpaste[5], name: "June" },
+							{ y: toothpaste[6], name: "July" },
+							{ y: toothpaste[7], name: "August" },
+							{ y: toothpaste[8], name: "September" },
+							{ y: toothpaste[9], name: "October" },
+							{ y: toothpaste[10], name: "November" },
+							{ y: toothpaste[11], name: "December" },
+						]
+					}
+				]
+			});
+			chart.render();
+			CanvasJS.addColorSet("colors",
+                [//colorSet Array
+                "#122c91","#2a6fdb","#48d6d2","#81e9e6","#fefcbf","#361d32",
+				"#543c52","#f55951","#edd2cb","#f1e8e6","#2F4F4F","#008080"
+                ]);
+
+			var chart = new CanvasJS.Chart("chartContainer2", {
+				colorSet: "colors",
+				theme: "light2",
+				exportEnabled: false,
+				animationEnabled: true,
+				title: {
+					text: "Monthly sales of Bathing soap",
+					fontSize: 20
+				},
+				legend:{
+					cursor: "pointer"
+				},
+				subtitles: [{
+					text: "Pie chart",
+					fontSize: 16
+				}],
+				data: [
+					{
+						type: "pie",
+						showInLegend: false,
+						indexLabelFontSize: 18,
+						radius: 180,
+						indexLabel: "{name} - {y}",
+						yValueFormatString: "###0.0\"%\"",
+						dataPoints: [
+							{ y: bathingsoap[0], name: "January" ,exploded: true},
+							{ y: bathingsoap[1], name: "February"},
+							{ y: bathingsoap[2], name: "March" },
+							{ y: bathingsoap[3], name: "April" },
+							{ y: bathingsoap[4], name: "May" },
+							{ y: bathingsoap[5], name: "June" },
+							{ y: bathingsoap[6], name: "July" },
+							{ y: bathingsoap[7], name: "August" },
+							{ y: bathingsoap[8], name: "September" },
+							{ y: bathingsoap[9], name: "October" },
+							{ y: bathingsoap[10], name: "November" },
+							{ y: bathingsoap[11], name: "December" },
+						]
+					}
+				]
+			});
+			
+			chart.render();
+		});
+
+	}
+	</script>
+</html>
